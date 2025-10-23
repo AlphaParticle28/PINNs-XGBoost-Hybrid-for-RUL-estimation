@@ -164,7 +164,7 @@ jupyter notebook XGBoost_Hybrid.ipynb
 ```python
 from RUL_Estimator import predict_rul
 
-battery_to_predict = 3 # Or the battery of your choce
+battery_to_predict = 3 # Or the battery of your choice
 start_cycle_to_predict = 50 # Or the start cycle of your choice
 EOL_Threshold = 1.4 # Or the threshold capacity of your choice
 full_df = your_production_dataset
