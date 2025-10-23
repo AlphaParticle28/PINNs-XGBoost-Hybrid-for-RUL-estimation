@@ -38,7 +38,6 @@ def ArrheniusRHS(T, I, params):
 def ArrheniusLHS(t, T, I, emb):
     """Left-hand side: compute dC/dt via autograd."""
     C = ANN(t, T, I, emb)
-    # CRITICAL: t must have requires_grad=True
     dCdt = autograd.grad(C, t, grad_outputs=torch.ones_like(C), create_graph=True)[0]
     return dCdt, C
 
