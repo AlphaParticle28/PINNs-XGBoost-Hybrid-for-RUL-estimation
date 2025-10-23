@@ -200,59 +200,72 @@ print(f"Predicted RUL: {predicted_rul} cycles")
 
 ## 🔬 Technical Implementation
 
-**PINN Composite Loss Function**
-The model is trained by minimizing a combination of data error and the physics residual.
-$L_{total} = \lambda_{data} \cdot L_{data} + \lambda_{physics} \cdot L_{physics}$
+### PINN Composite Loss Function
+The model is trained by minimizing a combination of data error and the physics residual:
 
-**Arrhenius Degradation Equation**
-The physics loss ($L_{physics}$) is the residual of this differential equation, where $\frac{dC}{dt}$ is computed via automatic differentiation.
-$\frac{dC}{dt} = -k \cdot I^n \cdot e^{-E_a / (RT)}$
+$$
+L_{\text{total}} = \lambda_{\text{data}} \cdot L_{\text{data}} + \lambda_{\text{physics}} \cdot L_{\text{physics}}
+$$
 
-**RUL Calculation**
+---
 
+### Arrhenius Degradation Equation
+The physics loss  $$\( L_{\text{physics}} \)$$ is the residual of this differential equation, where  
+$$\( \frac{dC}{dt} \)$$  is computed via automatic differentiation:
+
+$$
+\frac{dC}{dt} = -k \cdot I^n \cdot e^{-\frac{E_a}{R T}}
+$$
+
+---
+
+### ⚙️ RUL Calculation
 The function predicts a battery’s **Remaining Useful Life (RUL)** by forecasting its capacity \( C \) across cycles until it drops below the **End of Life (EOL)** threshold.
 
----
-
-### 1. Initialization
+#### 1. Initialization
 At start cycle \( c_s \):
-\[
+
+$$
 C_{\text{start}} = C(c_s)
-\]
-and PINN models generate physics-based features:
-\[
+$$
+
+PINN models generate physics-based features:
+
+$$
 (k, n, E_a), \; \text{embeddings} = f_{\text{PINN}}(x_{\text{start}})
-\]
+$$
 
----
-
-### 2. Normalization
+#### 2. Normalization
 For each future cycle \( c_f \):
-\[
+
+$$
 t_{\text{norm}} = \frac{c_f - c_{\min}}{c_{\max} - c_{\min}}
-\]
+$$
+
 Form hybrid input:
-\[
+
+$$
 X = [t_{\text{norm}}, T_{\text{norm}}, I_{\text{norm}}, \text{embeddings}, k, n, E_a]
-\]
+$$
 
----
-
-### 3. Capacity Forecast
+#### 3. Capacity Forecast
 Predict next capacity using XGBoost:
-\[
+
+$$
 C_{\text{new}} = f_{\text{XGB}}(X)
-\]
+$$
+
 Repeat until:
-\[
+
+$$
 C_{\text{new}} \leq C_{\text{EOL}}
-\]
+$$
 
----
+#### 4. Remaining Useful Life
 
-### 4. Remaining Useful Life
-\[
+$$
 \text{RUL} = c_f - c_s
-\]
+$$
+
 
 ---
