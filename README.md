@@ -220,10 +220,10 @@ $$
 ---
 
 ### ⚙️ RUL Calculation
-The function predicts a battery’s **Remaining Useful Life (RUL)** by forecasting its capacity \( C \) across cycles until it drops below the **End of Life (EOL)** threshold.
+The function predicts a battery’s **Remaining Useful Life (RUL)** by forecasting its capacity $$\( C \)$$ across cycles until it drops below the **End of Life (EOL)** threshold.
 
 #### 1. Initialization
-At start cycle \( c_s \):
+At start cycle $$\( c_s \)$$:
 
 $$
 C_{\text{start}} = C(c_s)
@@ -236,7 +236,7 @@ $$
 $$
 
 #### 2. Normalization
-For each future cycle \( c_f \):
+For each future cycle $$\( c_f \)$$:
 
 $$
 t_{\text{norm}} = \frac{c_f - c_{\min}}{c_{\max} - c_{\min}}
