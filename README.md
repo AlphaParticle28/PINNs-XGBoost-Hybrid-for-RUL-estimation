@@ -232,7 +232,7 @@ $$
 PINN models generate physics-based features:
 
 $$
-(k, n, E_a), \; \text{embeddings} = f_{\text{PINN}}(x_{\text{start}})
+(k, n, E_a, \text{embeddings}) = f_{\text{PINN}}(x_{\text{start}})
 $$
 
 #### 2. Normalization
