@@ -140,7 +140,7 @@ pip install torch pandas numpy scipy scikit-learn xgboost
 ```
 
 ### **2. Data Preparation**
-- PCreate a `Dataset/` folder in the root directory.
+- Create a `Dataset/` folder in the root directory.
 - Place all four `.mat` files (`B0005.mat`, `B0006.mat`, `B0007.mat`, `B0018.mat`) inside the `Dataset/` folder.
 ---
 
