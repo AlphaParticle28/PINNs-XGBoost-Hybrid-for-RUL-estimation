@@ -1,4 +1,4 @@
-# 🔋 PINNs-XGBoost-Hybrid-for-RUL-estimation
+# PINNs-XGBoost-Hybrid-for-RUL-estimation
 
 A physics-informed deep learning framework for battery life prediction, leveraging a **hybrid Physics-Informed Neural Network (PINN) and XGBoost model** to integrate electrochemical dynamics with data-driven patterns.
 
@@ -6,7 +6,7 @@ Achieves end-to-end **Remaining Useful Life (RUL)** forecasting by learning batt
 
 ---
 
-## 🌟 Project Overview
+## Project Overview
 This system provides high-fidelity predictions of battery capacity degradation by enforcing the **Arrhenius degradation law** within a neural network, creating a robust model that generalizes well. The hybrid approach uses the PINN as an intelligent feature extractor to enhance a powerful XGBoost model.
 
 ### **Key Capabilities**
@@ -18,7 +18,7 @@ This system provides high-fidelity predictions of battery capacity degradation b
 
 ---
 
-## 🗂️ Directory Structure
+## Directory Structure
 ```plaintext
 PINNs-XGBoost-Hybrid-for-RUL-estimation/
 │
@@ -47,7 +47,7 @@ PINNs-XGBoost-Hybrid-for-RUL-estimation/
 
 ---
 
-## 💾 Workflow Description
+## Workflow Description
 
 ### **1. Data Processing**
 **File:** `parseData.ipynb`
@@ -80,7 +80,7 @@ PINNs-XGBoost-Hybrid-for-RUL-estimation/
 - Compares the predictied and the ground truth RUL values, followed by plotting the forecast.
 ---
 
-## 📊 Data Management
+## Data Management
 
 ### **Primary Datasets**
 - **NASA Prognostics Data (`B0005.mat`, etc.)** – Contains voltage, current, temperature, and capacity measurements for multiple discharge cycles across four batteries.
@@ -92,7 +92,7 @@ PINNs-XGBoost-Hybrid-for-RUL-estimation/
 - `xgb_hybrid_model.json` - Trained XGBoost model for the hybrid.
 ---
 
-## 🧮 Technical Architecture
+## Technical Architecture
 
 ### **Neural Network Specifications**
 | Property        | Details |
@@ -106,7 +106,7 @@ PINNs-XGBoost-Hybrid-for-RUL-estimation/
 
 ---
 
-## 📦 Prerequisites
+## Prerequisites
 
 ### **System Requirements**
 - Python **3.10+**
@@ -121,7 +121,7 @@ pip install torch pandas numpy scipy scikit-learn xgboost
 
 ---
 
-## 🛠️ Installation Instructions
+## Installation Instructions
 
 ### **1. Environment Setup**
 ```bash
@@ -144,7 +144,7 @@ pip install torch pandas numpy scipy scikit-learn xgboost
 - Place all four `.mat` files (`B0005.mat`, `B0006.mat`, `B0007.mat`, `B0018.mat`) inside the `Dataset/` folder.
 ---
 
-## 🚦 How to Run
+## How to Run
 
 ### **Step 1 – Preprocess Data**
 ```bash
@@ -180,7 +180,7 @@ print(f"Predicted RUL: {predicted_rul} cycles")
 ```
 ---
 
-## 🏁 Key Features
+## Key Features
 | Feature | Description | Benefit |
 |---------|-------------|---------|
 | **Hybrid Model** | PINN feature extraction + XGBoost prediction. | Achieves 99.8% R² accuracy. |
@@ -191,14 +191,14 @@ print(f"Predicted RUL: {predicted_rul} cycles")
 
 ---
 
-## 📈 Model Performance
+## Model Performance
 - **PINN Performance**: R² = 0.997, MAPE = 0.46%
 - **Final Hybrid Performance**: R² = 0.998, MAPE = 0.39%
 - **Data Source**: NASA Prognostics Battery Dataset (636+ cycles)
 
 ---
 
-## 🔬 Technical Implementation
+## Technical Implementation
 
 ### PINN Composite Loss Function
 The model is trained by minimizing a combination of data error and the physics residual:
@@ -219,7 +219,7 @@ $$
 
 ---
 
-### ⚙️ RUL Calculation
+### RUL Calculation
 The function predicts a battery’s **Remaining Useful Life (RUL)** by forecasting its capacity $$\( C \)$$ across cycles until it drops below the **End of Life (EOL)** threshold.
 
 #### 1. Initialization
